@@ -33,3 +33,8 @@
 - any type allows a variable to be assigned any value, bypassing type checking.
     - It is flexible but sacrifices type safety, making the code less predictable.
     - Use any when dealing with unknown or dynamic types (e.g., external data or APIs).
+
+### Types of paramters:
+- Optional Parameters are defined with a ? and can be omitted when calling the function.
+- Required Parameters must always be provided when calling the function.
+- Rest Parameters are represented by ... and allow you to pass any number of arguments, which are treated as an array.
