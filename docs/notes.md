@@ -40,3 +40,7 @@
 - Rest Parameters are represented by ... and allow you to pass any number of arguments, which are treated as an array.
 ---
 - methods with the static keyword can be directly accessed using the class name, without the need to create an instance of the class.
+
+### Decorators
+- Decorators are special functions in TypeScript used to add metadata, modify behavior, or extend the functionality of classes, methods, properties, or parameters. They provide a way to apply declarative programming patterns.
+

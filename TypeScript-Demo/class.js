@@ -92,3 +92,8 @@ console.log(user2);
 console.log(restUsers);
 let result = restUsers.filter(user => user.id > 3);
 console.log(result);
+// ## Decorators:
+// @CompositionEvent({})
+// class Component {
+//     constructor(public name: string) {}  
+// }
