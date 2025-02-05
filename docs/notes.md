@@ -38,3 +38,5 @@
 - Optional Parameters are defined with a ? and can be omitted when calling the function.
 - Required Parameters must always be provided when calling the function.
 - Rest Parameters are represented by ... and allow you to pass any number of arguments, which are treated as an array.
+---
+- methods with the static keyword can be directly accessed using the class name, without the need to create an instance of the class.
