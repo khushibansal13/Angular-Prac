@@ -62,3 +62,13 @@ If it evaluates to false, Angular removes the element from the DOM entirely.
 
 <tag *ngFor="let item of items">...</tag>
 ```
+---
+### Attribute Directive:
+
+- ngClass is a built-in directive in Angular that dynamically assigns CSS classes to HTML elements based on expressions.
+``` typescript
+<tag [ngClass]="classExpression"></tag>
+```
+
+
+
