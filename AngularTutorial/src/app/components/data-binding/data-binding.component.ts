@@ -15,6 +15,7 @@ export class DataBindingComponent {
   currentDate: Date = new Date();
   myPlaceHolder: string = "Enter Full Name";
   div1ClassName: string = "bg-primary";
+  selectedCity: string = "";
 
   constructor() {
     console.log(this.firstName);

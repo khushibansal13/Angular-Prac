@@ -49,5 +49,16 @@ Two-way data binding allows you to **bind a component property to a form element
 - Two-way binding uses the directive **`ngModel`**, which is part of the **FormsModule**.
 
 ```html
-<input [(ngModel)]="property" />
+<input [(ngModel)]="property"/>
+```
+### Structural 
+- *ngIf is a structural directive in Angular that conditionally adds or removes elements from the DOM based on a boolean expression.
+- If the expression inside *ngIf evaluates to true, Angular renders the element and its children.
+If it evaluates to false, Angular removes the element from the DOM entirely.
+---
+- *ngFor is a structural directive used to dynamically render a list of elements by looping over an array or iterable data structure
+```typescript
+<div *ngIf="condition">Content to show if condition is true</div>
+
+<tag *ngFor="let item of items">...</tag>
 ```
