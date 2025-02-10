@@ -1,0 +1,83 @@
+<div class="container mt-5 p-4 bg-light rounded shadow">
+  <h2 class="text-center mb-4">User Form</h2>
+  <form class="needs-validation" (ngSubmit)="onUserSave()" [formGroup]="userForm">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input type="text" formControlName="fname" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+        <div class="text-danger">
+          @if (userForm.controls['fname'].errors?.['required'] && userForm.controls['fname'].touched) {
+            <span>This is required</span>
+
+          }
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Last name</label>
+        <input type="text" formControlName="lname" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+        <div class="text-danger">
+          @if (userForm.controls['lname'].errors?.['required'] && userForm.controls['lname'].touched) {
+            <span>This is required</span>
+          }
+          @if (userForm.controls['lname'].errors?.['minlength']) {
+            <span>Min char 4 required</span>
+          }
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text">&#64;</span>
+          <input type="text" formControlName="userName" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend">
+          <div class="invalid-feedback">Please choose a username.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+      <div class="col-md-6">
+        <label for="validationCustom03" class="form-label">City</label>
+        <input type="text" formControlName="city" class="form-control" id="validationCustom03" placeholder="City">
+        <div class="invalid-feedback">Please provide a valid city.</div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom04" class="form-label">State</label>
+        <input type="text" formControlName="state" class="form-control" id="validationCustom04" placeholder="State">
+        <div class="invalid-feedback">Please provide a valid state.</div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Zip</label>
+        <input type="text" formControlName="zip" class="form-control" id="validationCustom05" placeholder="Zip">
+        <div class="invalid-feedback">Please provide a valid zip.</div>
+      </div>
+    </div>
+
+    <div class="form-check mt-3">
+      <input formControlName="isAgree" class="form-check-input" type="checkbox" value="" id="invalidCheck">
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">You must agree before submitting.</div>
+    </div>
+
+    <button [disabled]="userForm.invalid" class="btn btn-primary w-100 mt-4" type="submit">Submit form</button>
+  </form>
+
+  <script>
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      var forms = document.getElementsByClassName('needs-validation');
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script>
+</div>
