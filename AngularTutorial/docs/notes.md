@@ -120,29 +120,38 @@ Two-way data binding allows you to **bind a component property to a form element
 
 - With `NgFor`, loops over immutable data without `trackBy` are a common cause of performance bugs. Using the `@for` block helps mitigate this.
 ---
-## Signals and Change Detection in Angular:
+## **Signals and Change Detection**
 
-- Signals Trigger Change Detection: Updating a signal (signal.set()) automatically triggers Angular's change detection, even with ChangeDetectionStrategy.OnPush.
-- Template Re-Evaluation: Once a signal updates, Angular re-renders the template, including changes to normal variables.
-- Efficient State Management: Signals act as reactive primitives tightly integrated with Angular's rendering pipeline, ensuring efficient and automatic updates.
+### **Key Concepts**
+- **Signals Trigger Change Detection:** Updating a signal using `signal.set()` automatically triggers Angular's change detection, even when `ChangeDetectionStrategy.OnPush` is used.
+- **Template Re-Evaluation:** Once a signal updates, Angular re-renders the template, including changes to normal variables.
+- **Efficient State Management:** Signals act as reactive primitives tightly integrated with Angular's rendering pipeline, ensuring efficient and automatic updates.
 
+### **Linked Signals**
 - **Linked signals** allow one signal's value to depend on other signals. Angular automatically re-evaluates the dependent signal whenever any source signals change.
 
+#### **Example**
 ```typescript
-  fullName = linkedSignal({
-    source: this.firstName,
-    computation: (newVal, PrevVal) => {
-      debugger;
-      const fullName = newVal + " " + this.lastName();
-      return fullName;
-    }
-  })
-  ```
-  ---
-  ## Template Forms:
+fullName = linkedSignal({
+  source: this.firstName,
+  computation: (newVal, prevVal) => {
+    debugger;
+    const fullName = newVal + " " + this.lastName();
+    return fullName;
+  }
+})
+```
+---
 
+## Forms in Angular
+
+## **1. Template-Driven Forms**
+
+### **Overview**
 - Template-driven forms rely on HTML templates to define form structure and logic.
 - Ideal for simple forms and small-scale applications.
+
+### **Example**
 ```html
 <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
   <label>Name:</label>
@@ -154,9 +163,56 @@ Two-way data binding allows you to **bind a component property to a form element
   <button type="submit" [disabled]="userForm.invalid">Submit</button>
 </form>
 ```
-  - Built-in form state tracking (touched, dirty, valid).
-  - #userForm="ngForm" references the form in the template for validation.
-  - [disabled]="userForm.invalid" disables the submit button if the form is invalid.
+
+### **Key Features**
+- Built-in form state tracking (`touched`, `dirty`, `valid`).
+- `#userForm="ngForm"`: References the form in the template for validation.
+- `[disabled]="userForm.invalid"`: Disables the submit button if the form is invalid.
+
+---
+
+## **2. Reactive Forms**
+
+### **Overview**
+- Best suited for complex forms with dynamic logic.
+- Structured form logic defined in TypeScript, offering greater control over form validation and interactions.
+
+### **Core Concepts**
+- **FormGroup:** Represents the entire form structure.
+- **FormControl:** Tracks input field values and validation state.
+- **Validators:** Built-in validation functions (`required`, `email`, etc.).
+
+### **Example**
+```typescript
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-reactive-form',
+  templateUrl: './reactive-form.component.html',
+})
+export class ReactiveFormComponent {
+  userForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
+  onSubmit(): void {
+    if (this.userForm.valid) {
+      console.log('Form Submitted:', this.userForm.value);
+    }
+  }
+}
+```
+
+### **Key Features**
+- **Dynamic Form Handling:** Easily add or remove controls.
+- **Validation Control:** Better control over validation logic.
+- **Programmatic Access:** Access and manipulate form state directly in TypeScript.
 
 
 
