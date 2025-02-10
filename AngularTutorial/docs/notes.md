@@ -69,6 +69,15 @@ If it evaluates to false, Angular removes the element from the DOM entirely.
 ``` typescript
 <tag [ngClass]="classExpression"></tag>
 ```
+- The ngStyle directive in Angular dynamically applies inline CSS styles to an HTML element.
+    - It allows binding a style object or key-value pairs directly in the template
+```typescript
+<div [ngStyle]="{'property': 'value'}">Styled Text</div>
+```
+---
+## Routing:
 
-
-
+- The RouterOutlet is a directive in Angular that acts as a placeholder where Angular will dynamically load and display routed components based on the active route.
+  - When you navigate to different routes, RouterOutlet renders the corresponding components defined in your route configuration.
+- The RouterLink directive is used to navigate between routes in your Angular application.
+  - It binds to anchor (<a>) elements and allows navigation without causing a full page reload.
