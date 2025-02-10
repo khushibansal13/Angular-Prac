@@ -3,6 +3,9 @@ import { ControlStatmentComponent } from './components/control-statment/control-
 import { AdminComponent } from './components/admin/admin.component';
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
 import { NgClassComponent } from './components/ng-class/ng-class.component';
+import { SignalComponent } from './components/signal/signal.component';
+import { LinkedSignalComponent } from './components/linked-signal/linked-signal.component';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +28,17 @@ export const routes: Routes = [
   {
     path: 'control-flow',
     component: ControlStatmentComponent
+  },
+  {
+    path: 'signal',
+    component: SignalComponent
+  },
+  {
+    path: 'linked-signal',
+    component: LinkedSignalComponent
+  },
+  {
+    path:'template-form',
+    component: TemplateFormComponent
   }
 ];

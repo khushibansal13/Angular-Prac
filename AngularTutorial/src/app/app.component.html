@@ -7,16 +7,30 @@
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="admin" >Admin</a>
+          <a class="nav-link active" routerLink="admin">Admin</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="'dataBinding'">Data-Binding</a>
+        <!-- Directives Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Directives</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="'dataBinding'">Data-Binding</a></li>
+            <li><a class="dropdown-item" routerLink="ng-class">NgClass</a></li>
+            <li><a class="dropdown-item" routerLink="control-flow">ControlFlow</a></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="ng-class">NgClass</a>
+        <!-- Signals Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Signals</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="signal">Signal</a></li>
+            <li><a class="dropdown-item" routerLink="linked-signal">LinkedSignal</a></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="control-flow">ControlFlow</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Forms</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="template-form">TemplateForm</a></li>
+          </ul>
         </li>
       </ul>
       <form class="d-flex">
