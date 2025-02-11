@@ -22,6 +22,7 @@
               <th>Model</th>
               <th>Reg No</th>
               <th>Daily Rate</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,9 @@
                 <td>{{item.model}}</td>
                 <td>{{item.regNo}}</td>
                 <td>{{item.dailyRate}}</td>
+                <td>
+                  <button class="btn btn-success" (click)="onEdit(item)">Edit</button>
+                </td>
               </tr>
             }
 
@@ -79,7 +83,11 @@
         <div class="row">
           <div class="col-12 mt-2 text-center">
             <button class="btn btn-secondary m-2">Reset Form</button>
-            <button class="btn btn-success m-2" (click)="onSaveCar()">Save Car</button>
+            @if (carObj.carId == 0) {
+              <button class="btn btn-success m-2" (click)="onSaveCar()">Save Car</button>
+            }@else {
+              <button class="btn btn-warning m-2" (click)="updateCar()">Update Car</button>
+            }
           </div>
         </div>
       </div>

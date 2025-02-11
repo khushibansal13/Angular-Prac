@@ -40,4 +40,18 @@ export class PostApiComponent {
       }
     })
   }
+
+  updateCar() {
+    this.http.put("https://freeapi.miniprojectideas.com/api/CarRentalApp/UpdateCar", this.carObj).subscribe((res:any) => {
+      if(res.result) {
+        alert("Car updated successfully")
+      } else{
+        alert(res.message)
+      }
+    })
+  }
+
+  onEdit(data: any) {
+    this.carObj = data;
+  }
 }
