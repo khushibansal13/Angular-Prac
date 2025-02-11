@@ -305,5 +305,26 @@ const userResource = resource({
 - ngAfterContentInit() / ngAfterContentChecked(): Handle projected content.
 - ngAfterViewInit() / ngAfterViewChecked(): Handle the component's view and child views.
 - ngOnDestroy(): Cleanup logic like unsubscribing from observables
+---
+### Pipes in Angular:
+- Pipes are a feature in Angular used to transform data directly in the template. They provide a simple way to format and manipulate data without altering the original data in the component.
+```typescript
+{{ 'hello' | uppercase }}
+```
+#### Custom Pipe:
+```bash
+ng generate pipe custom
+```
+```typescript
+import { Pipe, PipeTransform } from '@angular/core';
 
+@Pipe({
+  name: 'reverseText'
+})
+export class ReverseTextPipe implements PipeTransform {
+  transform(value: string): string {
+    return value.split('').reverse().join('');
+  }
+}
+```
 
