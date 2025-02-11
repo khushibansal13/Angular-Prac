@@ -12,6 +12,8 @@ import { PostApiComponent } from './components/API/post-api/post-api.component';
 import { ResourceApiComponent } from './components/resource-api/resource-api.component';
 import { CustomerComponent } from './components/API/customer/customer.component';
 import { LifeCycleComponent } from './components/life-cycle/life-cycle.component';
+import { NgForComponent } from './components/ng-for/ng-for.component';
+import { NgIfComponent } from './components/ng-if/ng-if.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +32,14 @@ export const routes: Routes = [
   {
     path: 'ng-class',
     component: NgClassComponent
+  },
+  {
+    path: 'ng-if',
+    component: NgIfComponent
+  },
+  {
+    path: 'ng-for',
+    component: NgForComponent
   },
   {
     path: 'control-flow',

@@ -1,4 +1,27 @@
 <div class="row">
+  <h2>Pipe in angular</h2>
+  <div class="col-3">
+    courseName => {{courseName}}
+    <br>
+    uppercase => {{courseName | uppercase}} <br>
+    lowercase => {{courseName | lowercase}}
+  </div>
+  <div class="col-3">
+    studentObj => {{studentObj}}
+    <br>
+    studentObj => {{studentObj | json}}
+  </div>
+  <div class="col-3">
+    currentDate => {{currentDate}} <br>
+    currentDate => {{currentDate | date}} <br>
+    currentDate => {{currentDate | date:'yyyy-MM-dd'}} <br>
+    currentDate => {{currentDate | date:'hh:mm:ss'}} <br>
+  </div>
+
+</div>
+
+<div class="row pt-5">
+  <h2>NgFor in angular</h2>
   <div class="col-2">
     <ul>
       <li *ngFor="let city of cityList">
@@ -38,7 +61,7 @@
       <tbody>
         <tr *ngFor="let employee of employeeArray; let srno = index">
           <td>{{srno + 1}}</td>
-          <td>{{employee.name}}</td>
+          <td>{{employee.name | na}}</td>
           <td>{{employee.city}}</td>
           <td>{{employee.contactNo}}</td>
         </tr>
