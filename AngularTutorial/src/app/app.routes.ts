@@ -8,6 +8,7 @@ import { LinkedSignalComponent } from './components/linked-signal/linked-signal.
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { GetApiComponent } from './components/API/get-api/get-api.component';
+import { PostApiComponent } from './components/API/post-api/post-api.component';
 
 export const routes: Routes = [
   {
@@ -50,5 +51,9 @@ export const routes: Routes = [
   {
     path: 'get-api',
     component: GetApiComponent
+  },
+  {
+    path: 'post-api',
+    component: PostApiComponent
   }
 ];

@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-8 text-center">
+    <h2>POST API Integration using Template Form</h2>
+  </div>
+  <div class="col-4">
+    <button class="btn btn-success" (click)="getAllCars()">Load Cars</button>
+  </div>
+</div>
+
+<div class="row pt-2">
+  <div class="col-7">
+    <div class="card">
+      <div class="card-header bg-warning">
+        <h5>Car List</h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Reg No</th>
+              <th>Daily Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of carList; track $index) {
+              <tr>
+                <td>{{$index + 1}}</td>
+                <td>{{item.brand}}</td>
+                <td>{{item.model}}</td>
+                <td>{{item.regNo}}</td>
+                <td>{{item.dailyRate}}</td>
+              </tr>
+            }
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-5">
+    <div class="card">
+      <div class="card-header bg-warning">
+        <h5>Create New Car</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6 mt-2">
+            <label for="">Reg No</label>
+            <input type="text" [(ngModel)]="carObj.regNo" class="form-control" placeholder="Enter car image url">
+          </div>
+          <div class="col-6 mt-2">
+            <label for="">Brand</label>
+            <input type="text" [(ngModel)]="carObj.brand" class="form-control" placeholder="Enter brand name">
+          </div>
+          <div class="col-6 mt-2">
+            <label for="">Model</label>
+            <input type="text" [(ngModel)]="carObj.model" class="form-control" placeholder="Enter model name">
+          </div>
+          <div class="col-6 mt-2">
+            <label for="">Year</label>
+            <input type="text" [(ngModel)]="carObj.year" class="form-control" placeholder="Enter year">
+          </div>
+          <div class="col-6 mt-2">
+            <label for="">Color</label>
+            <input type="text" [(ngModel)]="carObj.color" class="form-control" placeholder="Enter color">
+          </div>
+          <div class="col-6 mt-2">
+            <label for="">Daily Rate</label>
+            <input type="text" [(ngModel)]="carObj.dailyRate" class="form-control" placeholder="Enter daily rate">
+          </div>
+          <div class="col-6 mt-2">
+            <label for="">Car Image URL</label>
+            <input type="text" [(ngModel)]="carObj.carImage" class="form-control" placeholder="Enter car image url">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mt-2 text-center">
+            <button class="btn btn-secondary m-2">Reset Form</button>
+            <button class="btn btn-success m-2" (click)="onSaveCar()">Save Car</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
