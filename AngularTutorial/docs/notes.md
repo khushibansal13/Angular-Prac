@@ -213,6 +213,15 @@ export class ReactiveFormComponent {
 - **Dynamic Form Handling:** Easily add or remove controls.
 - **Validation Control:** Better control over validation logic.
 - **Programmatic Access:** Access and manipulate form state directly in TypeScript.
+---
+### HttpClient Key Points
+- Used for making HTTP requests (GET, POST, PUT, DELETE) in Angular.
+- Needs to import HttpClientModule in AppModule/AppConfig
+- Provides methods to easily handle API responses.
+#### Why Inject HttpClient in Constructor
+- Constructor is for service injection using dependency injection (DI).
+- Helps set up services early before the component is fully ready.
+- Keeps code clean by separating setup and task execution (ngOnInit()).
 
 
 
