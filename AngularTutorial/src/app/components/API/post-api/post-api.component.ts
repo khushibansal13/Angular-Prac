@@ -35,6 +35,7 @@ export class PostApiComponent {
     this.http.post("https://freeapi.miniprojectideas.com/api/CarRentalApp/CreateNewCar", this.carObj).subscribe((res:any) => {
       if(res.result) {
         alert("Car created successfully")
+        this.getAllCars();
       } else{
         alert(res.message)
       }
@@ -44,7 +45,8 @@ export class PostApiComponent {
   updateCar() {
     this.http.put("https://freeapi.miniprojectideas.com/api/CarRentalApp/UpdateCar", this.carObj).subscribe((res:any) => {
       if(res.result) {
-        alert("Car updated successfully")
+        alert("Car updated successfully");
+        this.getAllCars();
       } else{
         alert(res.message)
       }
@@ -53,5 +55,19 @@ export class PostApiComponent {
 
   onEdit(data: any) {
     this.carObj = data;
+  }
+
+  onDelete(id: number) {
+    const isDelete = confirm("Are you sure you want to delete?");
+    if(isDelete == true) {
+      this.http.delete("https://freeapi.miniprojectideas.com/api/CarRentalApp/DeleteCarbyCarId?carid=" + id).subscribe((res:any) => {
+        if(res.result) {
+          alert("Car deleted successfully");
+          this.getAllCars();
+        } else{
+          alert(res.message)
+        }
+      })
+    }
   }
 }
