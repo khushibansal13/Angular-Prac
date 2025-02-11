@@ -268,6 +268,42 @@ deleteData() {
     });
 }
 ```
+---
+### Resource API:
 
+- Resource API was introduced to streamline the handling of asynchronous data within applications. This API leverages Angular's reactive primitives, particularly signals, to manage and deliver asynchronous dependencies, such as data fetched from an API. 
+- Reactive Data Handling: Integrates with Angular's signal-based reactivity model, allowing for seamless updates when data changes.
+- Simplified Asynchronous Operations: Provides a structured approach to perform asynchronous tasks, like fetching data from a server, and automatically manages the state of these operations.
+```typescript
+import { resource } from '@angular/core';
+
+const userId = signal(1);
+
+const userResource = resource({
+  request: () => ({ id: userId() }),
+  loader: async ({ request }) => {
+    const response = await fetch(`https://api.example.com/users/${request.id}`);
+    return response.json();
+  },
+});
+```
+---
+### Life Cycle Flow
+1. constructor()
+2. ngOnChanges()
+3. ngOnInit()
+4. ngDoCheck()
+5. ngAfterContentInit()
+6. ngAfterContentChecked()
+7. ngAfterViewInit()
+8. ngAfterViewChecked()
+9. ngOnDestroy()
+- constructor(): Initializes component; used for dependency injection.
+- ngOnInit(): Called after component is initialized; ideal for initial data setup.
+- ngOnChanges(): Called when input-bound properties change.
+- ngDoCheck(): Custom change detection logic.
+- ngAfterContentInit() / ngAfterContentChecked(): Handle projected content.
+- ngAfterViewInit() / ngAfterViewChecked(): Handle the component's view and child views.
+- ngOnDestroy(): Cleanup logic like unsubscribing from observables
 
 
