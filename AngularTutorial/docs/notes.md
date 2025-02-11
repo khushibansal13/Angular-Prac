@@ -222,6 +222,52 @@ export class ReactiveFormComponent {
 - Constructor is for service injection using dependency injection (DI).
 - Helps set up services early before the component is fully ready.
 - Keeps code clean by separating setup and task execution (ngOnInit()).
+---
+## API in Angular:
+
+1. Get Request: 
+Retrieve data from a server:
+```typescript
+getData() {
+  this.http.get('https://jsonplaceholder.typicode.com/users')
+    .subscribe((data: any) => {
+      console.log('GET Response:', data);
+    });
+}
+```
+2. Post Request:
+Send data to a server:
+
+```typescript
+createData() {
+  const newUser = { name: 'John Doe', email: 'john.doe@example.com' };
+  this.http.post('https://jsonplaceholder.typicode.com/users', newUser)
+    .subscribe((response) => {
+      console.log('POST Response:', response);
+    });
+}
+```
+3. Put Request:
+Update an existing record:
+```typescript
+updateData() {
+  const updatedUser = { name: 'John Updated', email: 'updated@example.com' };
+  this.http.put('https://jsonplaceholder.typicode.com/users/1', updatedUser)
+    .subscribe((response) => {
+      console.log('PUT Response:', response);
+    });
+}
+```
+4. Delete Request:
+Remove a record from the server:
+```typescript
+deleteData() {
+  this.http.delete('https://jsonplaceholder.typicode.com/users/1')
+    .subscribe((response) => {
+      console.log('DELETE Response:', response);
+    });
+}
+```
 
 
 
