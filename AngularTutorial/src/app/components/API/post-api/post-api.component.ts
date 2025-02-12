@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TabsComponent } from "../../../reusable/tabs/tabs.component";
 
 @Component({
   selector: 'app-post-api',
-  imports: [FormsModule],
+  imports: [FormsModule, TabsComponent],
   templateUrl: './post-api.component.html',
   styleUrl: './post-api.component.css'
 })
@@ -24,6 +25,7 @@ export class PostApiComponent {
   }
 
   http = inject(HttpClient);
+  currentTab: string = '';
 
   getAllCars() {
     this.http.get("https://freeapi.miniprojectideas.com/api/CarRentalApp/GetCars").subscribe((res:any) => {
@@ -69,5 +71,9 @@ export class PostApiComponent {
         }
       })
     }
+  }
+
+  onTabChange(tabName: string)  {
+    this.currentTab = tabName;
   }
 }
