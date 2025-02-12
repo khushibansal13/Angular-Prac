@@ -223,10 +223,24 @@ export class ReactiveFormComponent {
 - Helps set up services early before the component is fully ready.
 - Keeps code clean by separating setup and task execution (ngOnInit()).
 ---
-## API in Angular:
+# **HTTP Client in Angular**
 
-1. Get Request: 
-Retrieve data from a server:
+## **HttpClient Key Points**
+- Used for making HTTP requests (`GET`, `POST`, `PUT`, `DELETE`) in Angular.
+- Requires importing `HttpClientModule` in `AppModule` or `AppConfig`.
+- Provides methods to handle API responses efficiently.
+
+### **Why Inject HttpClient in the Constructor?**
+- The constructor is used for service injection via dependency injection (DI).
+- It ensures services are set up before the component is fully ready.
+- Helps maintain clean code by separating setup and execution logic (`ngOnInit()`).
+
+---
+
+## **API Requests in Angular**
+
+### **1. GET Request**
+Retrieves data from a server.
 ```typescript
 getData() {
   this.http.get('https://jsonplaceholder.typicode.com/users')
@@ -235,9 +249,9 @@ getData() {
     });
 }
 ```
-2. Post Request:
-Send data to a server:
 
+### **2. POST Request**
+Sends data to a server.
 ```typescript
 createData() {
   const newUser = { name: 'John Doe', email: 'john.doe@example.com' };
@@ -247,8 +261,9 @@ createData() {
     });
 }
 ```
-3. Put Request:
-Update an existing record:
+
+### **3. PUT Request**
+Updates an existing record.
 ```typescript
 updateData() {
   const updatedUser = { name: 'John Updated', email: 'updated@example.com' };
@@ -258,8 +273,9 @@ updateData() {
     });
 }
 ```
-4. Delete Request:
-Remove a record from the server:
+
+### **4. DELETE Request**
+Removes a record from the server.
 ```typescript
 deleteData() {
   this.http.delete('https://jsonplaceholder.typicode.com/users/1')
@@ -268,12 +284,16 @@ deleteData() {
     });
 }
 ```
----
-### Resource API:
 
-- Resource API was introduced to streamline the handling of asynchronous data within applications. This API leverages Angular's reactive primitives, particularly signals, to manage and deliver asynchronous dependencies, such as data fetched from an API. 
-- Reactive Data Handling: Integrates with Angular's signal-based reactivity model, allowing for seamless updates when data changes.
-- Simplified Asynchronous Operations: Provides a structured approach to perform asynchronous tasks, like fetching data from a server, and automatically manages the state of these operations.
+---
+
+# **Resource API in Angular**
+
+- The **Resource API** was introduced to streamline the handling of asynchronous data in applications.
+- **Reactive Data Handling:** Integrates with Angular’s signal-based reactivity model, ensuring seamless updates when data changes.
+- **Simplified Asynchronous Operations:** Provides a structured approach to fetching and managing API data.
+
+### **Example:**
 ```typescript
 import { resource } from '@angular/core';
 
@@ -287,34 +307,34 @@ const userResource = resource({
   },
 });
 ```
+
 ---
-### Life Cycle Flow
-1. constructor()
-2. ngOnChanges()
-3. ngOnInit()
-4. ngDoCheck()
-5. ngAfterContentInit()
-6. ngAfterContentChecked()
-7. ngAfterViewInit()
-8. ngAfterViewChecked()
-9. ngOnDestroy()
-- constructor(): Initializes component; used for dependency injection.
-- ngOnInit(): Called after component is initialized; ideal for initial data setup.
-- ngOnChanges(): Called when input-bound properties change.
-- ngDoCheck(): Custom change detection logic.
-- ngAfterContentInit() / ngAfterContentChecked(): Handle projected content.
-- ngAfterViewInit() / ngAfterViewChecked(): Handle the component's view and child views.
-- ngOnDestroy(): Cleanup logic like unsubscribing from observables
+
+# **Angular Lifecycle Flow**
+
+1. `constructor()` - Initializes the component; used for dependency injection.
+2. `ngOnChanges()` - Called when input-bound properties change.
+3. `ngOnInit()` - Invoked after component initialization; ideal for initial data setup.
+4. `ngDoCheck()` - Custom change detection logic.
+5. `ngAfterContentInit()` / `ngAfterContentChecked()` - Handles projected content.
+6. `ngAfterViewInit()` / `ngAfterViewChecked()` - Manages the component’s view and child views.
+7. `ngOnDestroy()` - Cleanup logic like unsubscribing from observables.
+
 ---
-### Pipes in Angular:
-- Pipes are a feature in Angular used to transform data directly in the template. They provide a simple way to format and manipulate data without altering the original data in the component.
-```typescript
+
+# **Pipes in Angular**
+- Pipes transform data directly within the template, allowing formatting and data manipulation without modifying the original data.
+```html
 {{ 'hello' | uppercase }}
 ```
-#### Custom Pipe:
+
+### **Custom Pipe:**
+Generate a custom pipe using:
 ```bash
 ng generate pipe custom
 ```
+
+#### **Example:**
 ```typescript
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -324,6 +344,44 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ReverseTextPipe implements PipeTransform {
   transform(value: string): string {
     return value.split('').reverse().join('');
+  }
+}
+```
+
+---
+
+# **@Input and @Output Decorators**
+
+- These decorators facilitate communication between parent and child components, enabling data transfer in both directions.
+
+### **@Input Decorator**
+Used to receive data from a parent component.
+```typescript
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `<p>{{ childData }}</p>`
+})
+export class ChildComponent {
+  @Input() childData: string = '';
+}
+```
+
+### **@Output Decorator**
+Used to send data or events from a child component to a parent component.
+```typescript
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `<button (click)="sendData()">Click Me</button>`
+})
+export class ChildComponent {
+  @Output() notifyParent = new EventEmitter<string>();
+
+  sendData() {
+    this.notifyParent.emit('Hello from Child');
   }
 }
 ```
