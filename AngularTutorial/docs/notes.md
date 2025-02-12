@@ -385,4 +385,51 @@ export class ChildComponent {
   }
 }
 ```
+---
+## Auth Guard in Angular
+
+- Auth Guards in Angular help protect routes by restricting access based on authentication or authorization. They are used in the Angular Router to prevent users from accessing specific routes unless they meet certain conditions.
+
+### Types of Route Guards in Angular
+- CanActivate – Restricts access to a route based on authentication.
+- CanActivateChild – Similar to CanActivate, but applies to child routes.
+- CanLoad – Prevents lazy-loaded modules from loading unless the condition is met.
+- CanDeactivate – Checks if the user can leave a route (useful for unsaved form changes).
+- Resolve – Pre-fetches data before navigating to a route.
+```bash
+ng generate guard auth
+```
+```typescript
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+
+  constructor(private router: Router) {}
+
+  canActivate(): boolean {
+    const isAuthenticated = localStorage.getItem('token') ? true : false;
+
+    if (!isAuthenticated) {
+      this.router.navigate(['/login']); // Redirect to login if not authenticated
+      return false;
+    }
+    return true;
+  }
+}
+```
+---
+## @ViewChild in Angular
+
+- @ViewChild is a decorator in Angular that allows you to get a reference to a child component, directive, or DOM element within a parent component. It is commonly used when you need direct access to child elements for manipulation, such as calling methods, changing properties, or modifying styles dynamically.
+```typescript
+@ViewChild(selector) childProperty: ChildComponent;
+```
+- selector: The component, directive, or template reference variable you want to access.
+- childProperty: A variable where the reference to the child component or element will be stored.
+
+
 

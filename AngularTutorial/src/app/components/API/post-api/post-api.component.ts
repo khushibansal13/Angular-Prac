@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TabsComponent } from "../../../reusable/tabs/tabs.component";
 import { Car, ICarList } from '../../../model/car';
@@ -12,11 +12,24 @@ import { Car, ICarList } from '../../../model/car';
 })
 export class PostApiComponent {
 
-  carList: ICarList[] = []; 
+  carList: ICarList[] = [];
+
+  @ViewChild('txtCity') cityTextBox : ElementRef | undefined;
+
+  @ViewChild(TabsComponent) myTabviewChild!: TabsComponent;
+
   carObj: Car = new Car();
 
   http = inject(HttpClient);
   currentTab: string = '';
+
+  readCity() {
+    const city = this.cityTextBox?.nativeElement.value;
+    if (this.cityTextBox) {
+      this.cityTextBox.nativeElement.style.backgroundColor = "red";
+    }
+    const val = this.myTabviewChild.currentTab;
+  }
 
   getAllCars() {
     this.http.get("https://freeapi.miniprojectideas.com/api/CarRentalApp/GetCars").subscribe((res:any) => {

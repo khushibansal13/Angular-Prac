@@ -8,11 +8,13 @@
     </div>
   </div>
   <div class="col-4">
-    <button class="btn btn-success" (click)="getAllCars()">Load Cars</button>
+    <button class="btn btn-success mx-3" (click)="getAllCars()">Load Cars</button>
   </div>
 </div>
+<input type="text" #txtCity placeholder="Enter City" class="mt-3 mx-3">
+<button (click)="readCity()">Read Value</button>
 
-<div class="row pt-2">
+<div class="row pt-2 mt-3">
   @if (currentTab == 'Car List') {
     <div class="col-12">
       <div class="card">
