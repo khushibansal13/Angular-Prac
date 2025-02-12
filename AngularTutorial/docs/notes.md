@@ -430,6 +430,9 @@ export class AuthGuard implements CanActivate {
 ```
 - selector: The component, directive, or template reference variable you want to access.
 - childProperty: A variable where the reference to the child component or element will be stored.
+---
+### ng-template and ng-container
 
-
-
+- <ng-template> is an Angular element that is not rendered in the DOM unless explicitly instructed. It is used with structural directives (*ngIf, *ngFor, etc.) or injected dynamically.
+- <ng-container> is an invisible wrapper that groups elements without adding an extra HTML element to the DOM.
+- Best used to prevent unnecessary <div> wrappers in the DOM.

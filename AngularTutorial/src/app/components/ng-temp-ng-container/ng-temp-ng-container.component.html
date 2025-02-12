@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-5">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr No</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Mobile No</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="isLoader">
+          <ng-container  *ngTemplateOutlet="loaderTemp"></ng-container>
+
+        </ng-container>
+        <ng-container *ngIf="!isLoader" >
+          <tr *ngFor="let employee of employeeArray; let srno = index">
+            <td>{{ srno + 1 }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.city }}</td>
+            <td>{{ employee.contactNo }}</td>
+            <td>
+              <h4 *ngIf="employee.isActive else deactive">Active</h4>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #loaderTemp>
+  <tr>
+    <td colspan="4" class="text-align">
+      <div class="spinner-border text-muted"></div>
+      <div class="spinner-border text-primary"></div>
+      <div class="spinner-border text-success"></div>
+      <div class="spinner-border text-info"></div>
+      <div class="spinner-border text-warning"></div>
+      <div class="spinner-border text-danger"></div>
+      <div class="spinner-border text-secondary"></div>
+      <div class="spinner-border text-dark"></div>
+      <div class="spinner-border text-light"></div>
+    </td>
+  </tr>
+</ng-template>
+
+<ng-template #deactive>
+  <div class="text-danger">
+    <span>Deactive</span>
+  </div>
+</ng-template>
