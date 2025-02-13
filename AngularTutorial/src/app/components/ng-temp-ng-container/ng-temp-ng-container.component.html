@@ -15,6 +15,7 @@
           <ng-container  *ngTemplateOutlet="loaderTemp"></ng-container>
 
         </ng-container>
+        <!-- <div [ngTemplateOutlet]="loaderTemp"></div> -->
         <ng-container *ngIf="!isLoader" >
           <tr *ngFor="let employee of employeeArray; let srno = index">
             <td>{{ srno + 1 }}</td>

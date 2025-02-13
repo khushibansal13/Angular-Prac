@@ -38,6 +38,9 @@ export class LoginComponent {
     this.http.post("https://projectapi.gerasim.in/api/UserApp/login", this.apiLoginObj)
     .subscribe((res:any) => {
       localStorage.setItem("angular19User", res.data.userId)
+      localStorage.setItem("angular19Token", res.data.token)
+
+      localStorage.setItem("angular19TokenData" , JSON.stringify(res.data))
       this.router.navigateByUrl("admin")
     },error => {
       alert("Invalid Credentials!");
