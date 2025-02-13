@@ -436,3 +436,17 @@ export class AuthGuard implements CanActivate {
 - <ng-template> is an Angular element that is not rendered in the DOM unless explicitly instructed. It is used with structural directives (*ngIf, *ngFor, etc.) or injected dynamically.
 - <ng-container> is an invisible wrapper that groups elements without adding an extra HTML element to the DOM.
 - Best used to prevent unnecessary <div> wrappers in the DOM.
+
+### Services:
+
+- Used for code reusability and dependency injection.
+- Created using ng generate service service-name.
+- Injected into components via the constructor.
+- Commonly used for API calls and shared data.
+
+### Interceptors:
+
+- Used to modify HTTP requests and responses globally.
+- Created using ng generate interceptor interceptor-name.
+- Implement the HttpInterceptor interface.
+- Used for authentication, logging, and error handling.

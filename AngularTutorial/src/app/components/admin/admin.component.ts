@@ -13,7 +13,7 @@ import { CustomerService } from '../../services/customer.service';
 export class AdminComponent {
 
   constructor(private httpClient: HttpClient, private custService:CustomerService) {
-    this.getUsers();
+    this.getUsers();        
     this.custService.tokenReceived$.subscribe((res:boolean) => {
       if (res) {
         this.getUsers();
