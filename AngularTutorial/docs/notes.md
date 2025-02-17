@@ -386,19 +386,21 @@ export class ChildComponent {
 }
 ```
 ---
-## Auth Guard in Angular
+# Auth Guard in Angular
 
-- Auth Guards in Angular help protect routes by restricting access based on authentication or authorization. They are used in the Angular Router to prevent users from accessing specific routes unless they meet certain conditions.
+Auth Guards in Angular help protect routes by restricting access based on authentication or authorization. They are used in the Angular Router to prevent users from accessing specific routes unless they meet certain conditions.
 
-### Types of Route Guards in Angular
-- CanActivate – Restricts access to a route based on authentication.
-- CanActivateChild – Similar to CanActivate, but applies to child routes.
-- CanLoad – Prevents lazy-loaded modules from loading unless the condition is met.
-- CanDeactivate – Checks if the user can leave a route (useful for unsaved form changes).
-- Resolve – Pre-fetches data before navigating to a route.
+## Types of Route Guards in Angular
+- **CanActivate** – Restricts access to a route based on authentication.
+- **CanActivateChild** – Similar to CanActivate, but applies to child routes.
+- **CanLoad** – Prevents lazy-loaded modules from loading unless the condition is met.
+- **CanDeactivate** – Checks if the user can leave a route (useful for unsaved form changes).
+- **Resolve** – Pre-fetches data before navigating to a route.
+
 ```bash
 ng generate guard auth
 ```
+
 ```typescript
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
@@ -421,37 +423,49 @@ export class AuthGuard implements CanActivate {
   }
 }
 ```
----
-## @ViewChild in Angular
 
-- @ViewChild is a decorator in Angular that allows you to get a reference to a child component, directive, or DOM element within a parent component. It is commonly used when you need direct access to child elements for manipulation, such as calling methods, changing properties, or modifying styles dynamically.
+---
+
+# @ViewChild in Angular
+
+`@ViewChild` is a decorator in Angular that allows you to get a reference to a child component, directive, or DOM element within a parent component. It is commonly used when you need direct access to child elements for manipulation, such as calling methods, changing properties, or modifying styles dynamically.
+
 ```typescript
 @ViewChild(selector) childProperty: ChildComponent;
 ```
-- selector: The component, directive, or template reference variable you want to access.
-- childProperty: A variable where the reference to the child component or element will be stored.
+
+- `selector`: The component, directive, or template reference variable you want to access.
+- `childProperty`: A variable where the reference to the child component or element will be stored.
+
 ---
-### ng-template and ng-container
 
-- <ng-template> is an Angular element that is not rendered in the DOM unless explicitly instructed. It is used with structural directives (*ngIf, *ngFor, etc.) or injected dynamically.
-- <ng-container> is an invisible wrapper that groups elements without adding an extra HTML element to the DOM.
-- Best used to prevent unnecessary <div> wrappers in the DOM.
+# ng-template and ng-container
 
-### Services:
+- `<ng-template>` is an Angular element that is not rendered in the DOM unless explicitly instructed. It is used with structural directives (`*ngIf`, `*ngFor`, etc.) or injected dynamically.
+- `<ng-container>` is an invisible wrapper that groups elements without adding an extra HTML element to the DOM.
+- Best used to prevent unnecessary `<div>` wrappers in the DOM.
 
-- Used for code reusability and dependency injection.
-- Created using ng generate service service-name.
+---
+
+# Services
+
+- Services are used for code reusability and dependency injection.
+- Created using `ng generate service service-name`.
 - Injected into components via the constructor.
 - Commonly used for API calls and shared data.
 
-### Interceptors:
+---
 
-- Used to modify HTTP requests and responses globally.
-- Created using ng generate interceptor interceptor-name.
-- Implement the HttpInterceptor interface.
+# Interceptors
+
+- Interceptors are used to modify HTTP requests and responses globally.
+- Created using `ng generate interceptor interceptor-name`.
+- Implement the `HttpInterceptor` interface.
 - Used for authentication, logging, and error handling.
 
-## Key Differences Between Promises & Observables
+---
+
+# Key Differences Between Promises & Observables
 
 | Feature          | Promise                | Observable                  |
 |------------------|------------------------|-----------------------------|
@@ -461,12 +475,12 @@ export class AuthGuard implements CanActivate {
 | Operators        | No extra features      | Supports powerful RxJS operators |
 | Handling Errors  | `.catch()`             | `.subscribe({ error })`     |
 
-#### When to Use What?
+## When to Use What?
 
-- Use Promises when:
+- Use **Promises** when:
   - You only need one result (e.g., API call, fetching user data once).
-  - You want a simpler solution with .then() / .catch().
-- Use Observables when:
+  - You want a simpler solution with `.then()` / `.catch()`.
+- Use **Observables** when:
   - You need multiple values over time (e.g., live updates, WebSocket, user input events).
   - You need to unsubscribe to stop listening.
   - You want to use RxJS operators for transformation, filtering, etc.
@@ -480,8 +494,40 @@ export class AuthGuard implements CanActivate {
 | State management inside components| Signals (Angular 16+) ✅           |
 | Timers (setTimeout, setInterval)  | Observable ✅                      |
 
-### QueryParams in Routing:
-- queryParams in Angular allow you to pass optional parameters through the URL without affecting the route structure. They are useful when you need to send extra data without defining them in the route path.
-  - Unlike component variables, query parameters persist even if the page is reloaded.
+---
 
+# QueryParams in Routing
 
+`queryParams` in Angular allow you to pass optional parameters through the URL without affecting the route structure. They are useful when you need to send extra data without defining them in the route path.
+
+- Unlike component variables, query parameters persist even if the page is reloaded.
+
+---
+
+# View Encapsulation
+
+View Encapsulation in Angular is a mechanism to control the visibility and scope of styles applied to a component's template. It defines how the component's styles should interact with its parent and child components in the component tree. By default, Angular uses encapsulation to isolate styles between components to prevent them from affecting other parts of the application.
+
+### 1. Emulated (default)
+This is the default encapsulation strategy. It emulates native shadow DOM behavior by adding a unique attribute to the component's HTML and styles, ensuring that styles are scoped only to that component.
+
+- **How it works**:
+  - Angular adds an additional attribute to the component's HTML elements (e.g., `class="my-component-xyz"`).
+  - Angular uses scoped styles by appending the component class to each CSS selector.
+  - Styles are isolated to the component but not completely hidden from others.
+
+### 2. None
+With the None view encapsulation, Angular doesn't encapsulate styles at all. This means that the styles you define in the component will leak out and affect other components. This behavior is similar to traditional global CSS.
+
+- **How it works**:
+  - No special attribute is added to the component's HTML.
+  - The styles are applied globally across the entire application.
+  - Useful when you want to apply global styles or override default encapsulation behavior.
+
+### 3. Shadow DOM
+This is the most isolated form of encapsulation and uses the native Shadow DOM to encapsulate styles and HTML content in the browser. With this strategy, styles and HTML are completely encapsulated within the component, and external styles won't affect the component, nor will the component's styles leak out.
+
+- **How it works**:
+  - Angular uses the native browser Shadow DOM to encapsulate styles and HTML.
+  - Styles are completely isolated from the rest of the page.
+  - The styles only apply to the component inside the shadow tree.
