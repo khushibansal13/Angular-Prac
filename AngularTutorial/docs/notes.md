@@ -450,3 +450,23 @@ export class AuthGuard implements CanActivate {
 - Created using ng generate interceptor interceptor-name.
 - Implement the HttpInterceptor interface.
 - Used for authentication, logging, and error handling.
+
+## Key Differences Between Promises & Observables
+
+| Feature          | Promise                | Observable                  |
+|------------------|------------------------|-----------------------------|
+| Emits Values     | Only once              | Multiple times              |
+| Cancellable      | No                     | Yes (unsubscribe)           |
+| Execution        | Runs immediately       | Runs only when subscribed   |
+| Operators        | No extra features      | Supports powerful RxJS operators |
+| Handling Errors  | `.catch()`             | `.subscribe({ error })`     |
+
+#### When to Use What?
+
+- Use Promises when:
+  - You only need one result (e.g., API call, fetching user data once).
+  - You want a simpler solution with .then() / .catch().
+- Use Observables when:
+  - You need multiple values over time (e.g., live updates, WebSocket, user input events).
+  - You need to unsubscribe to stop listening.
+  - You want to use RxJS operators for transformation, filtering, etc.
