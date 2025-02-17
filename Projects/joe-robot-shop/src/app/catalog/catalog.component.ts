@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IProduct } from './product.model';
 import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { ProductDetailsComponent } from "../product-details/product-details.component";
+import { CartService } from '../cart.service';
+
 
 @Component({
   selector: 'app-catalog',
-  imports: [NgFor,NgIf, CurrencyPipe,NgClass],
+  imports: [NgFor, NgIf, CurrencyPipe, NgClass, ProductDetailsComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
@@ -12,8 +15,9 @@ export class CatalogComponent {
 
   products: IProduct[];
   filter: string = '';
+  // private cartSvc: CartService = inject(CartService);
 
-  constructor() {
+  constructor(private cartSvc: CartService) {
     this.products = [
       {
         id: 1,
@@ -191,13 +195,19 @@ export class CatalogComponent {
     ];
   }
 
-  getImage(product: IProduct) {
-    return  '/assets/images/robot-parts/' + product.imageName;
-  }
+
 
   getFilterProduct() {
     return this.filter === ''
     ? this.products
     : this.products.filter((product) => product.category === this.filter);
+  }
+
+  getDiscountedPrice(product: IProduct) {
+    return {strikethrough: product.discount > 0};
+  }
+
+  addToCart(product: IProduct) {
+    this.cartSvc.add(product);
   }
 }

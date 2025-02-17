@@ -470,3 +470,18 @@ export class AuthGuard implements CanActivate {
   - You need multiple values over time (e.g., live updates, WebSocket, user input events).
   - You need to unsubscribe to stop listening.
   - You want to use RxJS operators for transformation, filtering, etc.
+
+| Use Case                          | Best Choice                        |
+|-----------------------------------|------------------------------------|
+| API Calls (GET, POST, etc.)       | HttpClient (Observable-based) ✅   |
+| Real-time data (WebSockets)       | Observable ✅                      |
+| User events (clicks, keystrokes)  | Observable ✅                      |
+| One-time async task               | Promise ✅                         |
+| State management inside components| Signals (Angular 16+) ✅           |
+| Timers (setTimeout, setInterval)  | Observable ✅                      |
+
+### QueryParams in Routing:
+- queryParams in Angular allow you to pass optional parameters through the URL without affecting the route structure. They are useful when you need to send extra data without defining them in the route path.
+  - Unlike component variables, query parameters persist even if the page is reloaded.
+
+
