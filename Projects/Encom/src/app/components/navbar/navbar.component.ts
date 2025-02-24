@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit,AfterViewInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { IUser } from '../product/productModel';
@@ -11,16 +11,19 @@ import { NgIf } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit,AfterViewInit {
 
   currentUser: IUser | null = null;
 
   ngOnInit(): void {
-      initFlowbite();
       const user = localStorage.getItem("angular19TokenData");
       if (user) {
         this.currentUser = JSON.parse(user);
       }
+  }
+
+  ngAfterViewInit(): void {
+    initFlowbite();
   }
 
   router = inject(Router);
