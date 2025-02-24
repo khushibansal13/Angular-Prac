@@ -1,6 +1,6 @@
 import { Component, Input, Output,EventEmitter } from '@angular/core';
 import { IProduct } from '../product/productModel';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ApiService } from '../../shared/api.service';
 
 @Component({
@@ -45,3 +45,4 @@ export class UpdateProductComponent {
   }
 }
 }
+

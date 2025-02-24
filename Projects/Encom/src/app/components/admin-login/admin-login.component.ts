@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-admin-login',
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './admin-login.component.html',
   styleUrl: './admin-login.component.css'
 })

@@ -57,6 +57,14 @@ export class ApiService {
     return this.http.post<any>("https://dummyjson.com/auth/refresh", { refreshToken });
   }
 
+  getProductCategory(category: string) {
+    return this.http.get("https://dummyjson.com/products/category/" + category);
+  }
+
+  getCategoryList() : Observable<string[]> {
+    return this.http.get<string[]>("https://dummyjson.com/products/category-list");
+  }
+
 
 
 }

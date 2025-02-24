@@ -31,6 +31,10 @@ export const routes: Routes = [
         component: ProductDetailComponent
       },
       {
+        path: 'product/:category',
+        component: ProductComponent
+      },
+      {
         path: 'product-table',
         component: ProductTableComponent
       },

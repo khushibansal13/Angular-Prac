@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
     }
 
     goBack() {
-      this.location.back(); // Go back to the previous page
+      this.location.back(); 
     }
 
 
