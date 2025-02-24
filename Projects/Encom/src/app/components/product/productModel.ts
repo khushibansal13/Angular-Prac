@@ -39,3 +39,9 @@ export interface IReview {
   reviewerName: string;
   reviewerEmail: string;
 }
+
+export interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
