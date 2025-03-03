@@ -2,10 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "Projects/Encom/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/encom/browser",
+        "buildCommand": "cd Projects/Encom && npm install && npm run build",
+        "distDir": "Projects/Encom/dist/encom/browser",
         "skipCache": true
       }
     }
