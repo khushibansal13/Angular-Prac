@@ -5,8 +5,8 @@
       "src": "Projects/Encom/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/encom"
-      }
+        "distDir": "Projects/Encom/dist/encom"
+}
     }
   ],
   "rewrites": [
@@ -16,3 +16,4 @@
     }
   ]
 }
+
