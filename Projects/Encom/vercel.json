@@ -5,7 +5,8 @@
       "src": "Projects/Encom/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "Projects/Encom/dist/encom"
+        "distDir": "dist/encom/browser",
+        "skipCache": true
 }
     }
   ],
