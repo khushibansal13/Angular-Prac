@@ -6,7 +6,6 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist/encom/browser",
-        "buildCommand": "cd Projects/Encom && npm install && npm run build",
         "skipCache": true
       }
     }
