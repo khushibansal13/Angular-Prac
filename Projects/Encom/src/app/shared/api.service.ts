@@ -37,9 +37,7 @@ export class ApiService {
       categoryName: product.categoryName
     });
   }
-  // updateProduct(productId: number, product:any) {
-  //   return this.http.put("https://dummyjson.com/products/" + productId, product);
-  // }
+  
 
   login(loginObj: any) {
     return this.http.post<any>("https://dummyjson.com/auth/login", loginObj);

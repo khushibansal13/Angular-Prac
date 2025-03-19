@@ -53,8 +53,9 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  getStars(rating: number): number[] {
-    const roundedRating = Math.floor(rating);
-    return Array(5).fill(0).map((_, index) => index + 1);
+  getStars(rating: number | undefined): number[] {
+    const validRating = rating ?? 0; 
+    return Array.from({ length: 5 }, (_, i) => i + 1);
   }
+
 }

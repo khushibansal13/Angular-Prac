@@ -12,7 +12,28 @@ import { DatePipe, NgClass, NgFor, NgIf, Location } from '@angular/common';
 })
 export class ProductDetailComponent implements OnInit {
     isToggle: any;
-    productDetail!: IProduct
+    productDetail: IProduct = {
+      id: 0,
+      description: '',
+      stock: 0,
+      categoryId: 0,
+      images: [],
+      title: '',
+      price: 0,
+      discountPercentage: 0,
+      rating: 0,
+      dimensions: { width: 0, height: 0, depth: 0 },
+      weight: 0,
+      brand: '',
+      sku: '',
+      tags: [],
+      availabilityStatus: '',
+      shippingInformation: '',
+      warrantyInformation: '',
+      returnPolicy: '',
+      reviews: []
+    };
+
 
     constructor(private api: ApiService, private activadedRoute: ActivatedRoute, private router: Router, private location: Location) {
 
@@ -28,7 +49,7 @@ export class ProductDetailComponent implements OnInit {
     }
 
     goBack() {
-      this.location.back(); 
+      this.location.back();
     }
 
 
