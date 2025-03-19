@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const category = params['category'] || ''; 
+      const category = params['category'] || '';
       this.selectedCategory = category;
       if (category) {
         this.getProductByCategory(category);
@@ -34,8 +34,8 @@ export class ProductComponent implements OnInit {
   }
 
   displayProducts() {
-    this.api.getProducts().subscribe((res:any) => {
-      this.products = res.products;
+    this.api.getProducts().subscribe((res:IProduct[]) => {
+      this.products = res;
       console.log(res);
 
     })
@@ -43,7 +43,7 @@ export class ProductComponent implements OnInit {
 
   getProductByCategory(category: string) {
     this.api.getProductCategory(category).subscribe((res:any) => {
-      this.products = res.products;
+      this.products = res;
     })
   }
 

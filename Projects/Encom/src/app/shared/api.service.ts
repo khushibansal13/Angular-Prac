@@ -8,43 +8,35 @@ import { IProduct } from '../components/product/productModel';
 })
 export class ApiService {
 
+  private apiUrl = 'http://localhost:5145/api';
+
   constructor(private http: HttpClient) { }
 
-  getProducts() {
-    return this.http.get<IProduct>("https://dummyjson.com/products")
+  getProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${this.apiUrl}/products`);
   }
 
   getProductById(productId: string): Observable<IProduct> {
-    return this.http.get<IProduct>("https://dummyjson.com/products/" + productId);
+    return this.http.get<IProduct>(`${this.apiUrl}/products/${productId}`);
   }
 
-  deleteProduct(productId: number): Observable<any> {
-    return this.http.delete(`https://dummyjson.com/products/${productId}`);
+  deleteProduct(productId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/products/${productId}`);
   }
 
   addProduct(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>("https://dummyjson.com/products/add",product);
+    return this.http.post<IProduct>(`${this.apiUrl}/products/add`, product);
   }
 
-  getCategories(): Observable<string[]> {
-    return this.http.get<string[]>("https://dummyjson.com/products/categories");
-  }
-
-  updateProduct(productId: number, product:any) {
-    return this.http.put("https://dummyjson.com/products/" + productId, {
+  updateProduct(productId: number, product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(`${this.apiUrl}/products/${productId}`, {
       title: product.title,
       description: product.description,
       price: product.price,
-      discountPercentage: product.discountPercentage,
       stock: product.stock,
-      rating  : product.rating,
-      images: product.images,
-      thumbnail: product.thumbnail,
-      category: product.category,
-      brand : product.brand
+      categoryName: product.categoryName
     });
   }
-
   // updateProduct(productId: number, product:any) {
   //   return this.http.put("https://dummyjson.com/products/" + productId, product);
   // }
@@ -57,12 +49,11 @@ export class ApiService {
     return this.http.post<any>("https://dummyjson.com/auth/refresh", { refreshToken });
   }
 
-  getProductCategory(category: string) {
-    return this.http.get("https://dummyjson.com/products/category/" + category);
+  getProductCategory(categoryName: string): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${this.apiUrl}/products/category/${categoryName}`);
   }
-
   getCategoryList() : Observable<string[]> {
-    return this.http.get<string[]>("https://dummyjson.com/products/category-list");
+    return this.http.get<string[]>(`${this.apiUrl}/categoryList`);
   }
 
 

@@ -22,7 +22,7 @@
         <a routerLink="/product-detail/{{item.id}}" class="w-full flex flex-col items-center">
           <div class="relative flex justify-center items-center p-4 md:p-6">
             <img [src]="item.thumbnail" [alt]="item.title + ' image'" class="w-32 md:w-44 aspect-square text-[#abd373] group-hover:bg-gray-800 text-4xl md:text-5xl rounded-full p-2 transition-all duration-300 group-hover:transition-all group-hover:duration-300 group-hover:-translate-y-2 mx-auto" />
-            <span class="absolute top-2 md:top-4 left-2 md:left-4 bg-[#e6ebdf] text-gray-800 text-xs font-semibold px-2 md:px-3 py-0.5 md:py-1 rounded-full">{{ item.category }}</span>
+            <span class="absolute top-2 md:top-4 left-2 md:left-4 bg-[#e6ebdf] text-gray-800 text-xs font-semibold px-2 md:px-3 py-0.5 md:py-1 rounded-full">{{ item.categoryName }}</span>
           </div>
           <p class="cardtxt font-semibold text-gray-900 tracking-wider group-hover:text-gray-700 text-lg md:text-xl text-center">{{ item.title }}</p>
           <div class="flex justify-center items-center mt-2">

@@ -101,25 +101,22 @@
 
     <!-- Category -->
     <div>
-      <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-      <input
-        type="text"
-        id="category"
-        [(ngModel)]="product.category"
-        name="category"
+      <label for="categoryName" class="block text-sm font-medium text-gray-700">Category</label>
+      <select
+        id="categoryName"
+        [(ngModel)]="product.categoryName"
+        name="categoryName"
         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#3B82F6] focus:border-[#3B82F6] transition-all"
-        placeholder="Enter category"
-        #category="ngModel"
-        required="true"
-        minlength="3">
-        <div class="text-red-500">
-          @if(category.errors?.['required'] && category.touched && category.dirty) {
-            <span>This is Required</span>
-          }
-          @if(category.errors?.['minlength'] && category.touched && category.dirty) {
-            <span>Category must be at least 3 characters long</span>
-          }
-    </div>
+        #categoryName="ngModel"
+        required>
+        <option value="" disabled>Select a category</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <div class="text-red-500">
+        @if (categoryName.errors?.['required'] && categoryName.touched && categoryName.dirty) {
+          <span>This is Required</span>
+        }
+      </div>
     </div>
 
 
