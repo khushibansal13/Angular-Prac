@@ -8,7 +8,7 @@ import { IProduct } from '../components/product/productModel';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:5145/api';
+  private apiUrl = 'http://10.13.106.23:5145/api';
 
   constructor(private http: HttpClient) { }
 
@@ -37,10 +37,10 @@ export class ApiService {
       categoryName: product.categoryName
     });
   }
-  
+
 
   login(loginObj: any) {
-    return this.http.post<any>("https://dummyjson.com/auth/login", loginObj);
+    return this.http.post<any>(`${this.apiUrl}/login`, loginObj);
   }
 
   refreshToken(refreshToken: string) {

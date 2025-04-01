@@ -13,23 +13,30 @@ import { NgIf } from '@angular/common';
 export class AdminLoginComponent {
 
   loginObj: any = {
-    username: '',
+    email: '',
     password: ''
   }
+
 
   constructor(private api : ApiService, private router: Router) { }
 
 
   onLogin() {
-    this.api.login(this.loginObj).subscribe((res) => {
-      localStorage.setItem("angular19User", res.id)
-      localStorage.setItem("angular19Token", res.accessToken)
-      localStorage.setItem("angular19RefreshToken" , res.refreshToken)
-      localStorage.setItem("angular19TokenData" , JSON.stringify(res))
-      alert(`Welcome, ${res.firstName}! You have successfully logged in.`);
-
-      this.router.navigateByUrl("product")
+    this.api.login(this.loginObj).subscribe({
+      next: (res) => {
+        localStorage.setItem("angular19User", res.username);
+        localStorage.setItem("angular19Token", res.token);
+        localStorage.setItem("angular19TokenData", JSON.stringify(res));
+        alert(`Welcome, ${res.username}! You have successfully logged in.`);
+        this.router.navigateByUrl("product");
+      },
+      error: (err) => {
+        console.error("Login error:", err);
+        alert(err.error || 'Login failed. Please try again.');
+      }
     });
   }
+
+
 
 }

@@ -9,7 +9,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const api = inject(ApiService);
   const loggedData = localStorage.getItem("angular19Token");
-  const refreshToken = localStorage.getItem('angular19RefreshToken');
 
 
   if (loggedData != null) {
